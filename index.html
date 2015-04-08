@@ -1,6 +1,7 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoMusic</title>
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- css -->
@@ -14,10 +15,26 @@
     }
     
     .header-panel {
-        background-color: #009587;
+    	background-color: #000;
         height: 144px;
         position: relative;
         z-index: 3;
+    }
+    #spots::before{
+        background-image: url(img/bus.jpeg);
+    }
+    #playlist::before{
+        background-image: url(img/turkey.jpeg);
+    }
+    .header-panel::before {
+    	content: "";
+    	opacity: 0.6;
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
     
     .header-panel div {
@@ -31,7 +48,7 @@
         font-weight: 200;
         position: absolute;
         bottom: 10px;
-        padding-left: 35px;
+        padding-left: 15px;
     }
     
     .header-panel h1 {
@@ -40,15 +57,22 @@
         font-weight: 400;
         position: absolute;
         bottom: 45px;
-        padding-left: 35px;
+        padding-left: 15px;
     }
     
+    .btn {
+    	padding: 4px 3px;
+    }
     #add-spot {
+    	background-color: #ccc;
         color: rgba(0, 0, 0, 0.62);
         position: fixed;
-        margin-top: 50px;
-        margin-left: 50px;
+        margin-top: -30px;
+        right: 10px;
         z-index: 100;
+    }
+    #add-spot i {
+    	top: 0;
     }
     </style>
 </head>
