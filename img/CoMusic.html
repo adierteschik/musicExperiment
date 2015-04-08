@@ -1,0 +1,143 @@
+
+<!-- saved from url=(0030)http://localhost:8000/#/logins -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoMusic</title>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css -->
+    <link href="http://localhost:8000/bower_components/bootstrap-material-design/dist/css/material.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    .header-panel {
+    	background-color: #000;
+        height: 144px;
+        position: relative;
+        z-index: 3;
+        margin-bottom: 20px;
+    }
+    #spots::before{
+        background-image: url(img/bus.jpeg);
+    }
+    #playlist::before{
+        background-image: url(img/turkey.jpeg);
+    }
+    #logins::before {
+    	background-image: url(img/train.jpeg);
+    }
+    .header-panel::before {
+    	content: "";
+    	opacity: 0.6;
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+    
+    .header-panel div {
+        position: relative;
+        height: 100%;
+    }
+    
+    .header-panel h3 {
+        color: #ddd;
+        font-size: 15px;
+        font-weight: 200;
+        position: absolute;
+        bottom: 10px;
+        padding-left: 15px;
+    }
+    
+    .header-panel h1 {
+        color: #FFF;
+        font-size: 22px;
+        font-weight: 400;
+        position: absolute;
+        bottom: 45px;
+        padding-left: 15px;
+    }
+    
+    .btn {
+    	padding: 4px 3px;
+    }
+    #add-spot {
+    	background-color: #ccc;
+        color: rgba(0, 0, 0, 0.62);
+        position: fixed;
+        margin-top: -30px;
+        right: 10px;
+        z-index: 100;
+    }
+    #add-spot i {
+    	top: 0;
+    }
+    </style>
+</head>
+
+<body ng-app="commusicApp" class="ng-scope">
+    <!-- ngView:  --><div ng-view="" class="ng-scope"><div class="header-panel ng-scope" id="logins">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Login</h1>
+                <h3>Choose where your music is and log in</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="list-group ng-scope">
+    <div class="list-group-item">
+        <div class="row-picture">
+            <img class="circle" src="./CoMusic_files/android-6-48.png" style="padding: 9px;" alt="icon">
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">My local music on Android</h4>
+            <!-- <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p> -->
+        </div>
+    </div>
+    <div class="list-group-separator"></div>
+    <div class="list-group-item">
+        <div class="row-picture">
+            <img class="circle" src="./CoMusic_files/facebook-48.png" style="padding: 9px;" alt="icon">
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">My list of likes on Facebook</h4>
+            <!-- <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p> -->
+        </div>
+    </div>
+    <div class="list-group-separator"></div>
+    <div class="list-group-item">
+        <div class="row-picture">
+            <img class="circle" src="./CoMusic_files/8tracks.png" style="padding: 4px;" alt="icon">
+        </div>
+        <div class="row-content">
+            <h4 class="list-group-item-heading">My Favorite mixes on 8Tracks</h4>
+            <!-- <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p> -->
+        </div>
+    </div>
+    <div class="list-group-separator"></div>
+</div>
+</div>
+    <!-- scripts -->
+    <script src="./CoMusic_files/jquery.js"></script>
+    <script src="./CoMusic_files/material.min.js"></script>
+    <script src="./CoMusic_files/ripples.min.js"></script>
+    <!-- activate the material design code -->
+    <script>
+    $.material.init();
+    </script>
+    <script src="./CoMusic_files/angular.min.js"></script>
+    <script src="./CoMusic_files/angular-route.js"></script>
+    <script src="./CoMusic_files/controllers.js"></script>
+    <script src="./CoMusic_files/app.js"></script>
+
+
+
+</body></html>

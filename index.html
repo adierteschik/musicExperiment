@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoMusic</title>
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- css -->
@@ -9,77 +9,72 @@
     <link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
-    <style>
-    * {
-        box-sizing: border-box;
-    }
-    
-    .header-panel {
-    	background-color: #000;
-        height: 144px;
-        position: relative;
-        z-index: 3;
-    }
-    #spots::before{
-        background-image: url(img/bus.jpeg);
-    }
-    #playlist::before{
-        background-image: url(img/turkey.jpeg);
-    }
-    .header-panel::before {
-    	content: "";
-    	opacity: 0.6;
-        background-size: cover;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-    }
-    
-    .header-panel div {
-        position: relative;
-        height: 100%;
-    }
-    
-    .header-panel h3 {
-        color: #ddd;
-        font-size: 15px;
-        font-weight: 200;
-        position: absolute;
-        bottom: 10px;
-        padding-left: 15px;
-    }
-    
-    .header-panel h1 {
-        color: #FFF;
-        font-size: 22px;
-        font-weight: 400;
-        position: absolute;
-        bottom: 45px;
-        padding-left: 15px;
-    }
-    
-    .btn {
-    	padding: 4px 3px;
-    }
-    #add-spot {
-    	background-color: #ccc;
-        color: rgba(0, 0, 0, 0.62);
-        position: fixed;
-        margin-top: -30px;
-        right: 10px;
-        z-index: 100;
-    }
-    #add-spot i {
-    	top: 0;
-    }
-    </style>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="commusicApp">
     <div ng-view></div>
     <!-- scripts -->
+    <script>
+
+
+  //   function statusChangeCallback(response) {
+  //   console.log('statusChangeCallback');
+  //   console.log(response);
+  //   // The response object is returned with a status field that lets the
+  //   // app know the current login status of the person.
+  //   // Full docs on the response object can be found in the documentation
+  //   // for FB.getLoginStatus().
+  //   if (response.status === 'connected') {
+  //     // Logged into your app and Facebook.
+  //      testAPI();
+  //   } else if (response.status === 'not_authorized') {
+  //     // The person is logged into Facebook, but not your app.
+  //     document.getElementById('status').innerHTML = 'Please log ' +
+  //     'into this app.';
+  //   } else {
+  //     // The person is not logged into Facebook, so we're not sure if
+  //     // they are logged into this app or not.
+  //     document.getElementById('status').innerHTML = 'Please log ' +
+  //     'into Facebook.';
+  //   }
+  // }
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '885518108176643',
+            cookie: true, // enable cookies to allow the server to access
+            // the session
+            xfbml: true, // parse social plugins on this page
+            version: 'v2.2' // use version 2.2
+        });
+
+        // Now that we've initialized the JavaScript SDK, we call
+        // FB.getLoginStatus().  This function gets the state of the
+        // person visiting this page and can return one of three states to
+        // the callback you provide.  They can be:
+        //
+        // 1. Logged into your app ('connected')
+        // 2. Logged into Facebook, but not your app ('not_authorized')
+        // 3. Not logged into Facebook and can't tell if they are logged into
+        //    your app or not.
+        //
+        // These three cases are handled in the callback function.
+
+        // FB.getLoginStatus(function(response) {
+        //     statusChangeCallback(response);
+        // });
+
+    };
+    // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+    </script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
     <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
