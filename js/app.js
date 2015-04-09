@@ -1,6 +1,6 @@
-angular.module('commusicApp', ['ngRoute', 'commusicApp.controllers']);
+var commusicApp = angular.module('commusicApp', ['ngRoute']);
 
-angular.module('commusicApp').config(['$routeProvider',
+commusicApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/logins', {
@@ -16,7 +16,47 @@ angular.module('commusicApp').config(['$routeProvider',
             controller: 'PlaylistCtrl'
         }).
         otherwise({
-            redirectTo: '/spots'
+            redirectTo: '/logins'
         });
     }
 ]);
+
+commusicApp.config(function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+});
+
+commusicApp.service('userService', function() {
+    var userId = '';
+    return {
+        setUser: function(aUserId) {
+            userId = aUserId;
+        },
+        getUser: function() {
+            return userId;
+        }
+    };
+});
+
+commusicApp.service('spotService', function() {
+    var spotId = '';
+    return {
+        setSpot: function(aspotId) {
+            spotId = aspotId;
+        },
+        getSpot: function() {
+            return spotId;
+        }
+    };
+});
+
+commusicApp.service('playlistService', function() {
+    var playlist = [];
+    return {
+        setSpot: function(playlistArray) {
+            playlist = playlistArray;
+        },
+        getSpot: function() {
+            return playlist;
+        }
+    };
+});

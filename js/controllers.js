@@ -1,7 +1,6 @@
-angular.module('commusicApp.controllers', []);
+angular.module('commusicApp')
 
-angular.module('commusicApp.controllers').controller('LoginsCtrl', ['$scope', function($scope) {
-    $scope.user = {};
+.controller('LoginsCtrl', ['$scope', '$http', '$window','$location', 'userService', function($scope, $http, $window, $location, userService) {
     $scope.testthis = function() {
         console.log("lala lala");
         FB.login(function(response) {
@@ -68,21 +67,65 @@ angular.module('commusicApp.controllers').controller('LoginsCtrl', ['$scope', fu
                     return item.name;
                 })
                 console.log(names);
+                $http.post('https://api.parse.com/1/classes/Person', {"artistList":names}).
+				  success(function(data, status, headers, config) {
+				  	console.log("success!" + status);
+				  	console.log(data);
+				  	userService.setUser(data.objectId);
+				  	$window.location = '#spots'
+				    // this callback will be called asynchronously
+				    // when the response is available
+				  }).
+				  error(function(data, status, headers, config) {
+				  	console.log("Error!" + status);
+				  	console.log(data);
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				  });
                 console.log("complete", names.length);
-                //items.filter.map.....
             });
         }
     }
 
-}]);
+}])
 
-angular.module('commusicApp.controllers').controller('SpotsCtrl', ['$scope', function($scope) {
-    $scope.spots = {};
+.controller('SpotsCtrl', ['$scope', '$http', '$window', 'userService', 'spotService', 'playlistService', function($scope, $http, $window, userService, spotService, playlistService) {
+    $http.get('https://api.parse.com/1/classes/Spot').
+    	success(function(data, status, headers, config) {
+    		console.log("success!" + status);
+    		console.log(data);
+    		$scope.spots = [];
+    		//take only relevant data to display and send
+    		data.results.forEach(function(res) {
+    			$scope.spots.push({'name': res.name, 'objectId': res.objectId});
+    		});
+    		console.log($scope.spots);
+    	}).
+    	error(function(data, status, headers, config) {
+    		console.log("Error! failed miserably: " + status);
+		  	console.log(data);
+    	});
+    $scope.sendSelectedSpot = function(spotId) {
+    	spotService.setSpot(spotId);
+    	console.log("spotID: " + spotId);
+    	$http.post('https://api.parse.com/1/functions/joinSpot', {"personId": userService.getUser(), "spotId": spotId}).
+    	success(function(data, status, headers, config) {
+    		console.log("success in spot!");
+    		console.log(data);
+    		playlistService.setPlaylist(data.result);
+    		$window.location = "#playlist";
+    	}).
+    	error(function(data, status, headers, config) {
+    		console.log("Error! failed miserably: " + status);
+		  	console.log(data);
+    	});
+    };
 
 
-}]);
 
-angular.module('commusicApp.controllers').controller('PlaylistCtrl', ['$scope', function($scope) {
+}])
+
+.controller('PlaylistCtrl', ['$scope', function($scope) {
     $scope.playlist = {};
 
 

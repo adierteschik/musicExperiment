@@ -17,3 +17,17 @@
         </div>
     </div>
 </div>
+<div class="list-group">
+    <div ng-repeat="spot in spots">
+        <div class="list-group-item" ng-click="sendSelectedSpot(spot.objectId);">
+            <div class="row-picture">
+                <i class="circle mdi-maps-place" alt="icon"></i>
+            </div>
+            <div class="row-content">
+                <h4 class="list-group-item-heading">{{spot.name}}</h4>
+                <p class="list-group-item-text">click here to join this room</p>
+            </div>
+        </div>
+        <div class="list-group-separator"></div>
+    </div>
+</div>
